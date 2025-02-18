@@ -2,6 +2,8 @@ package com.alejobeliz.projects.techforb.entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.List;
@@ -27,4 +29,10 @@ public class Plant {
 
     @OneToMany(mappedBy = "plant")
     private List<Reading> readings;
+
+    public Plant(Long id, String name, Country country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
 }

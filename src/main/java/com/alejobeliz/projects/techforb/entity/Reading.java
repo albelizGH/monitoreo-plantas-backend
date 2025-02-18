@@ -1,11 +1,9 @@
 package com.alejobeliz.projects.techforb.entity;
 
 
+import com.alejobeliz.projects.techforb.dto.request.reading.UpdateReadingRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
-
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "readings")
@@ -37,6 +35,19 @@ public class Reading {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "reading_type",nullable = false)
-    private ReadingType readingType;
+    private Name name;
+
+
+    public void updateReadding(UpdateReadingRequestDTO updateReadingRequestDTO){
+        if(updateReadingRequestDTO.readingsOk() != null){
+            this.readingsOk = updateReadingRequestDTO.readingsOk();
+        }
+        if(updateReadingRequestDTO.mediumAlerts() != null){
+            this.mediumAlerts = updateReadingRequestDTO.mediumAlerts();
+        }
+        if(updateReadingRequestDTO.redAlerts() != null){
+            this.redAlerts = updateReadingRequestDTO.redAlerts();
+        }
+    }
 
 }

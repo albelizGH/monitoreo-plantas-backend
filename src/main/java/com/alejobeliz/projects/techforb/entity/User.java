@@ -1,5 +1,6 @@
 package com.alejobeliz.projects.techforb.entity;
 
+import com.alejobeliz.projects.techforb.dto.request.user.NewUserRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +30,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name="created_at",nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rol")
+    private Rol rol;
+
+
+    public User(NewUserRequestDTO user) {
+        this.username = user.username();
+        this.email = user.email();
+        this.password = user.password();
+        this.rol = Rol.USER;
+    }
+
 }
+

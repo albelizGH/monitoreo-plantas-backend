@@ -17,9 +17,7 @@ public record NewReadingRequestDTO(
         Integer redAlerts,
 
         @NotNull(message = "El id de la planta no puede ser nulo")
-        Long idPlant,
+        Long idPlant
 
-        @NotNull(message = "El id del sensor no puede ser nulo")
-        Long idSensor
 ) {
 }

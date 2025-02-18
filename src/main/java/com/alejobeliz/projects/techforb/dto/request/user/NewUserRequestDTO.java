@@ -1,8 +1,6 @@
 package com.alejobeliz.projects.techforb.dto.request.user;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public record NewUserRequestDTO(
         @NotNull(message = "El nombre de usuario no puede estar vació")
@@ -13,6 +11,7 @@ public record NewUserRequestDTO(
         @Email(message = "El email debe ser válido")
         String email,
 
+        @Pattern(regexp = "^(?=.*[@$!%*?&]).{8,}$", message = "La contraseña debe tener al menos 8 caracteres y contener al menos un carácter especial")
         @NotNull(message = "La contraseña no puede estar vaciá")
         String password
 ) {

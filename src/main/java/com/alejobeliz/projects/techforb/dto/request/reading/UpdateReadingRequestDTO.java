@@ -16,6 +16,6 @@ public record UpdateReadingRequestDTO(
         @Min(message ="Debe haber al menos una alerta roja",value = 1)
         Integer redAlerts,
 
-        Boolean enabled
+        Boolean disabled
 ) {
 }
