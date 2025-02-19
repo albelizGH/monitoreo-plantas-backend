@@ -26,15 +26,15 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserResponseDTO createUser(NewUserRequestDTO user) {
-        Optional<User> clienteExsitente = userRepository.findByEmail(user.email());
-        if (clienteExsitente.isPresent()) {
+        Optional<User> existentUser = userRepository.findByEmail(user.email());
+        if (existentUser.isPresent()) {
             throw new EntityNotFoundException("Ya existe el usuario con correo: " + user.email());
         }
         String encriptedPassword =passwordEncoder.encode(user.password());
         NewUserRequestDTO userRequestDTO = new NewUserRequestDTO(user.username(), user.email(), encriptedPassword);
-        User cliente = new User(userRequestDTO);
-        userRepository.save(cliente);
-        return new UserResponseDTO (cliente);
+        User newUser = new User(userRequestDTO);
+        userRepository.save(newUser);
+        return new UserResponseDTO (newUser);
     }
 
 
