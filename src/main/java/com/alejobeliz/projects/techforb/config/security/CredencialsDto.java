@@ -1,4 +1,4 @@
-package com.alejobeliz.projects.techforb.security;
+package com.alejobeliz.projects.techforb.config.security;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

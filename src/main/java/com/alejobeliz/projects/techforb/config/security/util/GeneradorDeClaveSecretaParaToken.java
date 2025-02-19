@@ -1,4 +1,4 @@
-package com.alejobeliz.projects.techforb.security.util;
+package com.alejobeliz.projects.techforb.config.security.util;
 
 import java.security.SecureRandom;
 import java.util.Base64;

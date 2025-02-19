@@ -2,9 +2,9 @@ package com.alejobeliz.projects.techforb.controller;
 
 import com.alejobeliz.projects.techforb.dto.request.user.NewUserRequestDTO;
 import com.alejobeliz.projects.techforb.dto.response.UserResponseDTO;
-import com.alejobeliz.projects.techforb.security.AuthenticationService;
-import com.alejobeliz.projects.techforb.security.LoginDTO;
-import com.alejobeliz.projects.techforb.security.WebToken;
+import com.alejobeliz.projects.techforb.config.security.AuthenticationService;
+import com.alejobeliz.projects.techforb.config.security.LoginDTO;
+import com.alejobeliz.projects.techforb.config.security.WebToken;
 import com.alejobeliz.projects.techforb.service.impl.UserServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

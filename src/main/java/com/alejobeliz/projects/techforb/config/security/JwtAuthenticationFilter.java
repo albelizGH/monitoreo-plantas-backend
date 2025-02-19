@@ -1,4 +1,4 @@
-package com.alejobeliz.projects.techforb.security;
+package com.alejobeliz.projects.techforb.config.security;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.annotation.Nonnull;
@@ -21,7 +21,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailService userDetailService;
-    List<String> listaDeStrings = List.of("/api/auth","/swagger-ui.html","/swagger-ui","/v3/api-docs","/v3/api-docs.yaml","/v3/api-docs.json","/webjars");
+    List<String> listaDeStrings = List.of("/api/auth","/api/auth/login","/swagger-ui.html","/swagger-ui","/v3/api-docs","/v3/api-docs.yaml","/v3/api-docs.json","/webjars");
 
     @Autowired
     public JwtAuthenticationFilter(JwtService jwtService, UserDetailService userDetailService) {

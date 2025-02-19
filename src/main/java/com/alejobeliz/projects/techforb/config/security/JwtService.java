@@ -1,4 +1,4 @@
-package com.alejobeliz.projects.techforb.security;
+package com.alejobeliz.projects.techforb.config.security;
 
 import com.alejobeliz.projects.techforb.entity.User;
 import com.auth0.jwt.JWT;
