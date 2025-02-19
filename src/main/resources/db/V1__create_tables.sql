@@ -73,4 +73,6 @@ INSERT INTO readings (plant_id, reading_type, readings_ok, medium_alerts, red_al
 INSERT INTO readings (plant_id, reading_type, readings_ok, medium_alerts, red_alerts) VALUES (2, 'Tensión', 100, 10, 1);
 INSERT INTO readings (plant_id, reading_type, readings_ok, medium_alerts, red_alerts) VALUES (2, 'Viento', 100, 10, 1);
 
-INSERT INTO users (username, email, password) VALUES ('admin', 'admin@email.com','admin1234!')
+
+#admin1234! como contraseña
+INSERT INTO users (username, email, password) VALUES ('admin', 'admin@email.com','$2a$10$6RwTb8wXavUayDjJ47UScO14uwWPUUXSNIfqvBj4G6eRsB0wAb4ue!')

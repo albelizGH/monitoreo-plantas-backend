@@ -26,8 +26,6 @@ import java.util.Arrays;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    @Value("${ALLOW_ORIGIN}")
-    private String allowOrigin;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
