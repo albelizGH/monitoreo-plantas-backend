@@ -42,6 +42,14 @@ public class SecurityConfiguration {
                 .securityMatcher("/api/**")
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll() // Permitir acceso a autenticación
+                        .requestMatchers(
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml",
+                                "/v3/api-docs.json",
+                                "/webjars/**"
+                        ).permitAll()
                         .anyRequest().authenticated() // Cualquier otra solicitud requiere autenticación
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

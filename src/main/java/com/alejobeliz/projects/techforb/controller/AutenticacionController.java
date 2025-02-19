@@ -6,6 +6,8 @@ import com.alejobeliz.projects.techforb.security.AuthenticationService;
 import com.alejobeliz.projects.techforb.security.LoginDTO;
 import com.alejobeliz.projects.techforb.security.WebToken;
 import com.alejobeliz.projects.techforb.service.impl.UserServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,30 +19,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
+@Tag(name = "Autenticación", description = "Endpoints para la autenticación de usuarios")
 public class AutenticacionController {
 
-
-    private UserServiceImpl userService;
-    private AuthenticationService authenticationService;
+    private final UserServiceImpl userService;
+    private final AuthenticationService authenticationService;
 
     @Autowired
-    public AutenticacionController(UserServiceImpl clienteService, AuthenticationService authenticationService) {
-        this.userService = clienteService;
+    public AutenticacionController(UserServiceImpl userService, AuthenticationService authenticationService) {
+        this.userService = userService;
         this.authenticationService = authenticationService;
     }
 
-    @PostMapping("register")
+    @Operation(summary = "Registrar un nuevo usuario", description = "Crea una nueva cuenta de usuario en el sistema.")
+    @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> registrarCliente(@RequestBody @Valid NewUserRequestDTO newUserRequestDTO) {
         UserResponseDTO user = userService.createUser(newUserRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
-    @PostMapping("login")
-    public ResponseEntity autenticarUsuario(@RequestBody @Valid LoginDTO data) {
+    @Operation(summary = "Autenticar usuario", description = "Permite a un usuario iniciar sesión y obtener un token JWT.")
+    @PostMapping("/login")
+    public ResponseEntity<WebToken> autenticarUsuario(@RequestBody @Valid LoginDTO data) {
         WebToken token = authenticationService.autenticarLogin(data);
         return ResponseEntity.ok(token);
     }
-
-
 }
-
